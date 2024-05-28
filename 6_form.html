@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>My first Vue app</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  </head>
+
+  <body>
+    <div id="template">
+      {{ message }}
+    </div>
+
+    <script>
+      var vm = new Vue({
+        el: "#template",
+        data() {
+          return {
+            message: "Hello Vue!"
+          };
+        }
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>My first Vue app</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  </head>
+
+  <body>
+    <div id="template">
+      <div>message: {{ message }}</div>
+
+      <button v-on:click="plus">plus button</button>
+
+      <div>lowerCase_message: {{ lowerCase_message }}</div>
+    </div>
+
+    <script>
+      var vm = new Vue({
+        el: "#template",
+
+        data() {
+          return {
+            message: "Hello Vue!!",
+          };
+        },
+
+        methods: {
+          plus: function () {
+            this.message += " And ";
+            console.log(this.message);
+          },
+        },
+
+        computed: {
+          lowerCase_message: function () {
+            return this.message.toLowerCase();
+          },
+          reversedMessage() {
+            return this.message.split("").reverse().join("");
+          },
+        },
+
+        // created() {
+        //   this.plus();
+        // }
+      });
+    </script>
+  </body>
+</html>
