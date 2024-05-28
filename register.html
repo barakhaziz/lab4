@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  </head>
+  <body>
+    <div id="tamplate">
+      <form @submit.prevent="handleRegister">
+        user name:
+        <input type="text" v-model="username" placeholder="user name" />
+        <br />
+        first name:
+        <input type="text" v-model="first_name" placeholder="first name" />
+        <br />
+        last name:
+        <input type="text" v-model="last_name" placeholder="last name" />
+        <br />
+        country:
+        <input type="text" v-model="country" placeholder="country" />
+        <br />
+        password:
+        <input type="text" v-model="password" placeholder="password" />
+        <br />
+        confirm passeord:
+        <input
+          type="text"
+          v-model="confirmation_password"
+          placeholder="confirm password"
+        />
+        <br />
+        email:
+        <input type="text" v-model="email" placeholder="email" />
+        <br />
+        <input type="submit" value="send" />
+      </form>
+      <div v-if="submitted">submitted successfully</div>
+      <div v-else>
+        <div v-for="error in errors">{{error}}</div>
+      </div>
+    </div>
+  </body>
+</html>
+
+<script>
+  var vm = new Vue({
+    el: "#tamplate",
+    data() {
+      return {
+        username: "",
+        first_name: "",
+        last_name: "",
+        country: "",
+        password: "",
+        confirmation_password: "",
+        email: "",
+        profile_image_url: "",
+        errors: [],
+        submitted: false,
+      };
+    },
+    methods: {
+      handleRegister() {
+        this.errors = [];
+        if (this.username.length < 3 || this.username.length > 8) {
+          this.errors.push("user name too short or too long");
+        }
+        if (this.password.length < 5 || this.password.length > 10) {
+          this.errors.push("password too short or too long");
+        }
+        if (this.errors.length == 0) {
+          this.submitted = true;
+        }
+      },
+    },
+  });
+</script>
+
+<style></style>
